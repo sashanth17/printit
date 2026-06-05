@@ -1,0 +1,18 @@
+venv
+# Databases
+db.sqlite3
+
+# Virtual Environments
+venv/
+.venv/
+env/
+
+# Python compiled cache
+__pycache__/
+*.pyc
+
+# Environment variables / Secret keys
+.env
+
+# Media and Static files (optional, depending on your setup)
+media/
