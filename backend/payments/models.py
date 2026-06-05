@@ -1,0 +1,14 @@
+from django.db import models
+
+# Create your models here.
+
+class Payments(models.Model):
+    PaymentId = models.AutoField(primary_key=True)
+    OrderId = models.IntegerField()
+    Amount = models.IntegerField()
+    RazorpayPaymentId = models.CharField(max_length=255, unique=True)
+    RazorpayOrderId = models.CharField(max_length=255, unique=True)
+    RazorpaySignature = models.CharField(max_length=255, unique=True)
+    PaymentStatus = models.CharField(max_length=255)
+    PaidAt = models.DateTimeField(auto_now_add=True)
+    
