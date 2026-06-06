@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.parsers import MultiPartParser, FormParser
 
-from .serializers import OrderSerializer
+from .serializers import CreateOrderSerializer,ViewOrderSerializer
 from .models import Order
 
 import uuid
@@ -11,14 +11,9 @@ import uuid
 
 class OrderView(APIView):
     parser_classes = [MultiPartParser, FormParser]
-    def get(self, request):
-        return Response(
-            {"message": "Hello, this is the orders endpoint!"}
-        )
-
     def post(self, request):
 
-        serializer = OrderSerializer(data=request.data)
+        serializer = CreateOrderSerializer(data=request.data)
 
         if not serializer.is_valid():
             return Response(
@@ -95,3 +90,18 @@ class OrderView(APIView):
             },
             status=status.HTTP_201_CREATED
         )
+    
+from django.shortcuts import get_object_or_404
+class OrderDetailView(APIView):
+    def get(self, request, id):
+        order=get_object_or_404(Order, OrderId=id)
+        serializer=ViewOrderSerializer(order)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+
+
+class MyOrdersView(APIView):
+    def get(self, request, id):
+        orders = Order.objects.filter(User=id)
+        serializer = ViewOrderSerializer(orders, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

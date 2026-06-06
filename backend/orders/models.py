@@ -16,8 +16,7 @@ class Order(models.Model):
         ('in_progress', 'In Progress'),
         ('completed', 'Completed')
     ],
-    default='pending'
-)
+    default='pending')
     CreatedAt=models.DateTimeField(auto_now_add=True)
     QueuedAt=models.DateTimeField(null=True, blank=True)
     PrintedAt=models.DateTimeField(null=True, blank=True)
