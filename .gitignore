@@ -16,3 +16,5 @@ __pycache__/
 
 # Media and Static files (optional, depending on your setup)
 media/
+
+dontTrack/

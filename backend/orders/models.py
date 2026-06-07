@@ -3,7 +3,12 @@ from django.core.validators import FileExtensionValidator
 # Create your models here.
 
 class Order(models.Model):
-    User = models.ForeignKey('accounts.User', on_delete=models.CASCADE)  
+    User = models.ForeignKey(
+        'accounts.User',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+    )  
     OrderId = models.AutoField(primary_key=True)
     PageStart=models.IntegerField()
     PageEnd=models.IntegerField()

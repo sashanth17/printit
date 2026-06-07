@@ -39,7 +39,7 @@ export async function useFetch({
       `${BASE_URLS.BASE_URL}${endpoint}`,
       config
     );
-
+    // console.log("response : " , response);
     const data = await response.json();
 
     return {

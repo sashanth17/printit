@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Outlet } from "react-router-dom";
 
 import { endpoints } from "../../config/endpoints.js";
 import { useFetch } from "../../hooks/useFetch.js";
@@ -75,7 +75,7 @@ function Orders() {
 
       if (response.success) {
         navigate(
-          `/order/payment-window?id=${response.data.orderId}`
+          `/orders/payment-window?id=${response.data.orderId}`
         );
       }
 
@@ -263,6 +263,8 @@ function Orders() {
         </button>
 
       </div>
+
+      <Outlet />
     </div>
   );
 }
