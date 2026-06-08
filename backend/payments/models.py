@@ -4,7 +4,9 @@ from django.db import models
 
 class Payments(models.Model):
     PaymentId = models.AutoField(primary_key=True)
-    OrderId = models.IntegerField()
+    OrderId = models.ForeignKey(
+        'orders.Order',
+        on_delete=models.CASCADE)
     Amount = models.IntegerField()
     RazorpayPaymentId = models.CharField(max_length=255, unique=True)
     RazorpayOrderId = models.CharField(max_length=255, unique=True)

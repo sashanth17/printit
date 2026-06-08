@@ -1,0 +1,60 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Razorpay Demo</title>
+</head>
+<body>
+  <button id="pay-btn">Pay ₹50</button>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <script>
+    document.getElementById("pay-btn").addEventListener("click", function () {
+
+      const options = {
+        key: "rzp_test_SwKMu9r7HoKmIG",
+
+        amount: 5000,
+        currency: "INR",
+
+        name: "PrintItNow",
+        description: "Test Transaction",
+
+        // Hardcoded Razorpay Order ID
+        order_id: "order_Sz6RLNs94nBvVW",
+
+        handler: function (response) {
+          console.log("Payment Success");
+          console.log(response);
+
+          alert(
+            "Payment ID: " +
+            response.razorpay_payment_id
+          );
+        },
+
+        prefill: {
+          name: "Sashanth",
+          email: "test@example.com",
+          contact: "9999999999"
+        },
+
+        theme: {
+          color: "#3399cc"
+        }
+      };
+
+      const rzp = new Razorpay(options);
+
+      rzp.on("payment.failed", function (response) {
+        console.log(response.error);
+        alert(response.error.description);
+      });
+
+      rzp.open();
+    });
+  </script>
+</body>
+</html>
