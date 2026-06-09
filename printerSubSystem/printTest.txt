@@ -1,4 +1,13 @@
-curl -X POST http://localhost:8001/test/print/document ^
-  -F "document=@printTest.txt"
+curl -X POST http://localhost:8001/print/document ^
+-H "Content-Type: application/json" ^
+-d "{\"orderId\":\"ORD-1001\",\"filePath\":\"https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf\"}"
 
-is the comand to print this file using this server . "make sure you are in this dierctory while executing the command"
+//sample
+
+mac
+curl -X POST http://172.20.10.2:8001/print/document \
+-H "Content-Type: application/json" \
+-d '{
+  "orderId":"ORD-1001",
+  "filePath":"https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+}'
