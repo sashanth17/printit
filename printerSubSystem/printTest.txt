@@ -1,0 +1,4 @@
+curl -X POST http://localhost:8001/test/print/document ^
+  -F "document=@printTest.txt"
+
+is the comand to print this file using this server . "make sure you are in this dierctory while executing the command"
