@@ -209,3 +209,51 @@
 
   word-break: break-word;
 }
+
+/* Page range input wrapper alignment */
+.row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* Label for small inputs */
+.smallLabel {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+/* Number input styling */
+.input {
+  width: 120px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.15);
+}
+
+/* Hint text under range */
+.hint {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #777;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input[type="number"] {
+  -moz-appearance: textfield;
+}
