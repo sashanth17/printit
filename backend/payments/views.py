@@ -76,6 +76,10 @@ class VerifyPaymentView(APIView):
             payment_entry.RazorpaySignature=razorpay_signature
             payment_entry.PaymentStatus='Completed'
             payment_entry.save()
+            
+            ## Call Print Service API here
+            from .utils import pushToPrintService
+            pushToPrintService(order_id=payment_entry.OrderId.OrderId)
 
             return Response({
                 "success": True,

@@ -10,7 +10,6 @@ class Payments(models.Model):
     Amount = models.IntegerField()
     RazorpayPaymentId = models.CharField(max_length=255, unique=True)
     RazorpayOrderId = models.CharField(max_length=255, unique=True)
-    RazorpaySignature = models.CharField(max_length=255, unique=True)
+    RazorpaySignature = models.CharField(max_length=255)
     PaymentStatus = models.CharField(max_length=255)
     PaidAt = models.DateTimeField(auto_now_add=True)
-    
